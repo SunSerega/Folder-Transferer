@@ -13,10 +13,13 @@ begin
   bw.Write(f.Length);
   foreach var fname in f do
   begin
+    writeln($'Sending {fname}');
     bw.Write(fname);
     var str := System.IO.File.OpenRead(fname);
     bw.Write(str.Length);
     str.CopyTo(bw.BaseStream);
+    
+    str.Flush;
     str.Close;
     
     conn.FlushData;

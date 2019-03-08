@@ -15,7 +15,9 @@ begin
   
   loop br.ReadInt32 do
   begin
-    var f := System.IO.File.Create(br.ReadString);
+    var fname := br.ReadString;
+    writeln($'Receiving file {fname}');
+    var f := System.IO.File.Create(fname);
     var bw := new System.IO.BinaryWriter(f);
     var l := br.ReadInt64;
     
