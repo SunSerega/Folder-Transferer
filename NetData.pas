@@ -122,7 +122,7 @@ function SockConnection.CreateWriter := new System.IO.BinaryWriter(self.otp_str)
 procedure SockConnection.FlushData;
 begin
   sock.Send(otp_str.ToArray);
-  otp_str := new System.IO.MemoryStream;
+  otp_str.SetLength(0);
 end;
 
 procedure SockConnection.WaitForData;

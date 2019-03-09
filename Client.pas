@@ -10,7 +10,7 @@ procedure ReceiveFolder(br: System.IO.BinaryReader);
 begin
   
   var path := br.ReadString;
-  writeln($'Receiving {path}');
+  writeln($'Receiving path {path}');
   System.IO.Directory.CreateDirectory(path);
   
   loop br.ReadInt32 do
@@ -60,7 +60,11 @@ begin
     sender.Shutdown(SocketShutdown.Both);
     sender.Close;
   except
-    on e: Exception do Writeln(e);
+    on e: Exception do
+    begin
+      Sleep(100);
+      Writeln(e);
+    end;
   end;
   writeln('done');
   readln;
