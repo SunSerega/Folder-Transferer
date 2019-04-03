@@ -17,13 +17,15 @@ begin
     bw.Write(fname);
     var str := System.IO.File.OpenRead(fname);
     bw.Write(str.Length);
-    str.CopyTo(bw.BaseStream);
+    var br := new System.IO.BinaryReader(str);
+    while str.Position<str.Length do
+    begin
+      bw.Write(br.ReadBytes(1024*1024*100));
+      conn.FlushData;
+    end;
     
     str.Flush;
     str.Close;
-    
-    conn.FlushData;
-    bw := conn.CreateWriter;
   end;
   
   f := System.IO.Directory.GetDirectories(path);
