@@ -18,25 +18,25 @@ type
     
     
     private constructor := exit;
+    
+    public constructor(sock: Socket);
+    
+    
+    public function CreateReader: System.IO.BinaryReader;
+    
+    public function CreateWriter: System.IO.BinaryWriter;
+    
+    
+    public procedure FlushData;
+    
+    public procedure WaitForData;
+    
+    public procedure WaitForData(t: System.TimeSpan);
+    
+    public procedure Shutdown;
   
-  public constructor(sock: Socket);
+  end;
   
-  
-  public function CreateReader: System.IO.BinaryReader;
-  
-  public function CreateWriter: System.IO.BinaryWriter;
-  
-  
-  public procedure FlushData;
-  
-  public procedure WaitForData;
-  
-  public procedure WaitForData(t: System.TimeSpan);
-  
-  public procedure Shutdown;
-
-end;
-
 implementation
 
 {$region Misc}
