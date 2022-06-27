@@ -1,4 +1,4 @@
-
+﻿
 1. Start `Server.exe` on the pc with files to transfer.
 
 The server creates the `Bucket` folder, which is the folder to be copied to the target pc.
